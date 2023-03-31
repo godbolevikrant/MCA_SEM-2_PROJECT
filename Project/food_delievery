@@ -1,0 +1,352 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.7.33-log
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema fooddelievery
+--
+
+CREATE DATABASE IF NOT EXISTS fooddelievery;
+USE fooddelievery;
+
+--
+-- Definition of table `addfood`
+--
+
+DROP TABLE IF EXISTS `addfood`;
+CREATE TABLE `addfood` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `price` varchar(80) DEFAULT NULL,
+  `photo` varchar(300) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `addfood`
+--
+
+/*!40000 ALTER TABLE `addfood` DISABLE KEYS */;
+INSERT INTO `addfood` (`id`,`name`,`description`,`price`,`photo`,`status`) VALUES 
+ (3,'chpati','chapati','100','image/gettyimages-679705476-2048x2048.jpg','show'),
+ (4,'puri bhaji','puri bhaji wtith sambhr and chatani','35','image/front1.jpg','show'),
+ (5,'idali','idali sambhr','20','image/gettyimages-588169400-2048x2048.jpg','show'),
+ (6,'VADA sambhar','vada sambhar','35','image/gettyimages-1126450074-2048x2048.jpg','show'),
+ (7,'chapti','butter chapti','10','image/gettyimages-676294577-2048x2048.jpg','show'),
+ (8,'chpati','very nice','100','image/gettyimages-676294577-2048x2048.jpg','show'),
+ (9,'Pav Bhaji','Pav Bhaji with Two Extra Bread','40','image/front1.jpg','hide');
+/*!40000 ALTER TABLE `addfood` ENABLE KEYS */;
+
+
+--
+-- Definition of table `addmess`
+--
+
+DROP TABLE IF EXISTS `addmess`;
+CREATE TABLE `addmess` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `price` varchar(50) DEFAULT NULL,
+  `photo` varchar(300) DEFAULT NULL,
+  `status` varchar(45) DEFAULT 'show',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `addmess`
+--
+
+/*!40000 ALTER TABLE `addmess` DISABLE KEYS */;
+INSERT INTO `addmess` (`id`,`name`,`description`,`price`,`photo`,`status`) VALUES 
+ (2,'dosa','dosa','40','image/gettyimages-148557598-2048x2048.jpg','show'),
+ (3,'poli thali','poli thali','80','image/images (1).jpg','show'),
+ (4,'Puri-Bhaji','Puri-Bhaji price is  low.and wel quality','50','image/images (4).jpg','show'),
+ (5,'dahi vada','Dahi vada is a best qualiti quntity and prise','40','image/images (2).jpg','show'),
+ (6,'Thali','Thali','150','image/download.jpg','show'),
+ (7,'Mess tiffin','Mess Tffin\r\n','50','image/images.jpg','show'),
+ (8,'Chapati','Made With Wheat ','10','image/gettyimages-676294577-2048x2048.jpg','hide'),
+ (9,'Dal Khicadi','dd','20','image/gettyimages-590365605-2048x2048.jpg','show');
+/*!40000 ALTER TABLE `addmess` ENABLE KEYS */;
+
+
+--
+-- Definition of table `adminlogin`
+--
+
+DROP TABLE IF EXISTS `adminlogin`;
+CREATE TABLE `adminlogin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `adminlogin`
+--
+
+/*!40000 ALTER TABLE `adminlogin` DISABLE KEYS */;
+INSERT INTO `adminlogin` (`id`,`email`,`password`) VALUES 
+ (17,'admin@gmail.com','admin');
+/*!40000 ALTER TABLE `adminlogin` ENABLE KEYS */;
+
+
+--
+-- Definition of table `contact`
+--
+
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) DEFAULT NULL,
+  `mobile` varchar(15) DEFAULT NULL,
+  `message` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contact`
+--
+
+/*!40000 ALTER TABLE `contact` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contact` ENABLE KEYS */;
+
+
+--
+-- Definition of table `enquiry`
+--
+
+DROP TABLE IF EXISTS `enquiry`;
+CREATE TABLE `enquiry` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `mobile` varchar(50) DEFAULT NULL,
+  `subject` varchar(50) DEFAULT NULL,
+  `message` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `enquiry`
+--
+
+/*!40000 ALTER TABLE `enquiry` DISABLE KEYS */;
+INSERT INTO `enquiry` (`id`,`name`,`email`,`mobile`,`subject`,`message`) VALUES 
+ (5,'nikita','niki@gmail.com','9422648945','info','food related information'),
+ (6,'asha','asha123@gmail.com','9422648945','info','mess realted enquiry'),
+ (7,'Amrapali','amru@gmail.com','9422648945','info','online problem');
+/*!40000 ALTER TABLE `enquiry` ENABLE KEYS */;
+
+
+--
+-- Definition of table `food_order`
+--
+
+DROP TABLE IF EXISTS `food_order`;
+CREATE TABLE `food_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(20) DEFAULT NULL,
+  `product_id` varchar(20) DEFAULT NULL,
+  `product_name` varchar(100) DEFAULT NULL,
+  `quntity` varchar(50) DEFAULT NULL,
+  `prize` varchar(50) DEFAULT NULL,
+  `total` varchar(50) DEFAULT NULL,
+  `date` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `food_order`
+--
+
+/*!40000 ALTER TABLE `food_order` DISABLE KEYS */;
+INSERT INTO `food_order` (`id`,`user_id`,`product_id`,`product_name`,`quntity`,`prize`,`total`,`date`) VALUES 
+ (1,'1','5','idali','3','20','60','Jun 1, 2021 7:28:37 AM');
+/*!40000 ALTER TABLE `food_order` ENABLE KEYS */;
+
+
+--
+-- Definition of table `food_order1`
+--
+
+DROP TABLE IF EXISTS `food_order1`;
+CREATE TABLE `food_order1` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(20) DEFAULT NULL,
+  `total_amt` varchar(50) DEFAULT NULL,
+  `date` varchar(50) DEFAULT NULL,
+  `status` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `food_order1`
+--
+
+/*!40000 ALTER TABLE `food_order1` DISABLE KEYS */;
+INSERT INTO `food_order1` (`id`,`user_id`,`total_amt`,`date`,`status`) VALUES 
+ (1,'1','60','Jun 1, 2021 7:28:37 AM','complate');
+/*!40000 ALTER TABLE `food_order1` ENABLE KEYS */;
+
+
+--
+-- Definition of table `galleryadd`
+--
+
+DROP TABLE IF EXISTS `galleryadd`;
+CREATE TABLE `galleryadd` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `photo` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `galleryadd`
+--
+
+/*!40000 ALTER TABLE `galleryadd` DISABLE KEYS */;
+INSERT INTO `galleryadd` (`id`,`photo`) VALUES 
+ (1,'image/gettyimages-588169400-2048x2048.jpg'),
+ (2,'image/gettyimages-590365605-2048x2048.jpg'),
+ (3,'image/gettyimages-450614317-2048x2048.jpg'),
+ (4,'image/gettyimages-676294577-2048x2048.jpg'),
+ (5,'image/gettyimages-507172423-2048x2048.jpg'),
+ (6,'image/gettyimages-679705450-2048x2048.jpg'),
+ (7,'image/gettyimages-679705476-2048x2048.jpg'),
+ (8,'image/gettyimages-1126450074-2048x2048.jpg'),
+ (9,'image/gettyimages-1127569827-2048x2048.jpg'),
+ (10,'image/gettyimages-148557598-2048x2048.jpg'),
+ (11,'image/front.jpg'),
+ (12,'image/gettyimages-588169400-2048x2048.jpg');
+/*!40000 ALTER TABLE `galleryadd` ENABLE KEYS */;
+
+
+--
+-- Definition of table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` (`id`,`email`,`password`) VALUES 
+ (7,'niki@gmail.com','12345678'),
+ (8,'amru@gmail.com','12345678'),
+ (9,'asha123@gmail.com','78945612');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+
+
+--
+-- Definition of table `mess_order`
+--
+
+DROP TABLE IF EXISTS `mess_order`;
+CREATE TABLE `mess_order` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `product_id` varchar(45) DEFAULT NULL,
+  `product_name` varchar(500) DEFAULT NULL,
+  `quntity` varchar(45) DEFAULT NULL,
+  `prize` varchar(45) DEFAULT NULL,
+  `total` varchar(45) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mess_order`
+--
+
+/*!40000 ALTER TABLE `mess_order` DISABLE KEYS */;
+INSERT INTO `mess_order` (`id`,`user_id`,`product_id`,`product_name`,`quntity`,`prize`,`total`,`date`) VALUES 
+ (1,'1','3','poli thali','2','80','160','Jun 1, 2021 7:25:39 AM'),
+ (2,'1','4','Puri-Bhaji','3','50','150','Jun 1, 2021 7:25:39 AM');
+/*!40000 ALTER TABLE `mess_order` ENABLE KEYS */;
+
+
+--
+-- Definition of table `mess_order1`
+--
+
+DROP TABLE IF EXISTS `mess_order1`;
+CREATE TABLE `mess_order1` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `total_amt` varchar(45) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mess_order1`
+--
+
+/*!40000 ALTER TABLE `mess_order1` DISABLE KEYS */;
+INSERT INTO `mess_order1` (`id`,`user_id`,`total_amt`,`date`,`status`) VALUES 
+ (1,'1','310','Jun 1, 2021 7:25:39 AM','complate');
+/*!40000 ALTER TABLE `mess_order1` ENABLE KEYS */;
+
+
+--
+-- Definition of table `registration`
+--
+
+DROP TABLE IF EXISTS `registration`;
+CREATE TABLE `registration` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `mobile` varchar(15) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `city` varchar(20) DEFAULT NULL,
+  `address` varchar(60) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `confirm` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `registration`
+--
+
+/*!40000 ALTER TABLE `registration` DISABLE KEYS */;
+INSERT INTO `registration` (`id`,`name`,`mobile`,`email`,`city`,`address`,`gender`,`password`,`confirm`) VALUES 
+ (1,'Ajay','8087422232','ashishgokhalem314@gmail.com','Latur','Nana Nani park ,gandhi chowk','female','123456789','123456789');
+/*!40000 ALTER TABLE `registration` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
